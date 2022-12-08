@@ -78,7 +78,9 @@ module.exports = configure(function (/* ctx */) {
       // distDir
 
       // extendViteConf (viteConf) {},
-      // viteVuePluginOptions: {},
+      viteVuePluginOptions: {
+        reactivityTransform: true,
+      },
 
       vitePlugins: [
         ['@intlify/vite-plugin-vue-i18n', {
@@ -94,16 +96,15 @@ module.exports = configure(function (/* ctx */) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
       // https: true
-      port: 8888,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
     framework: {
       config: {},
 
-      // iconSet: 'material-icons', // Quasar icon set
-      // lang: 'en-US', // Quasar language pack
+      iconSet: 'material-icons', // Quasar icon set
+      lang: 'en-US', // Quasar language pack
 
       // For special cases outside of where the auto-import strategy can have an impact
       // (like functional components as one of the examples),
@@ -149,13 +150,7 @@ module.exports = configure(function (/* ctx */) {
                       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
-        ({ app, resolve }) => {
-          app.all(resolve.urlPath('*'), (req, _, next) => {
-            console.log('someone requested:', req.url)
-            next()
-          })
-        },
-        'render' // keep this as last one
+        'render', // keep this as last one
       ]
     },
 
