@@ -9,8 +9,12 @@
     "dev": "quasar dev",
     "pwa": "quasar dev -m pwa",
     "ssr": "quasar dev -m ssr",
+    "build": "quasar build",
+    "build:pwa": "quasar build -m pwa",
+    "build:ssr": "quasar build -m ssr",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "start": "node dist/ssr/index.js",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
